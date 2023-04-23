@@ -7,13 +7,15 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import extensions.update
+import model.Note
+import model.getNotes
 import kotlin.concurrent.thread
 
 @Composable
@@ -101,8 +103,4 @@ class AppState {
         val isLoading: Boolean = false,
         val notes: List<Note>? = null
     )
-}
-
-fun <T> MutableState<T>.update(newState: (T) -> T) = apply {
-    value = newState(value)
 }

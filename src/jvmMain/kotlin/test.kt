@@ -1,4 +1,5 @@
-import Note.*
+import model.Note
+import model.Note.*
 
 fun main() {
 
