@@ -1,5 +1,6 @@
 package data.model
 
+import data.model.Note.Type.AUDIO
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -21,7 +22,7 @@ fun getNotes(): Flow<List<Note>> = flow {
         Note(
             title = "Title $it",
             description = "Description $it",
-            if (it % 3 == 0) Note.Type.AUDIO else Note.Type.TEXT
+            if (it % 3 == 0) AUDIO else Note.Type.TEXT
         )
     }
     emit(notes)

@@ -6,10 +6,10 @@ import kotlinx.coroutines.runBlocking
 import data.model.Note
 
 class ViewModel {
-    private var _state: MutableStateFlow<Note> = MutableStateFlow(
+    /*private var _state: MutableStateFlow<Note> = MutableStateFlow(
         value = Note("Title 1", "Content 1", Note.Type.TEXT)
-    )
-    val state: StateFlow<Note> = _state
+    )*/
+    // val state: StateFlow<Note> = _state
 
     private var _state2 =
         MutableSharedFlow<Note>(replay = 3, extraBufferCapacity = 6, onBufferOverflow = BufferOverflow.DROP_OLDEST)
@@ -83,3 +83,30 @@ fun main(): Unit = runBlocking {
 //        .collect { println(it) }
 
 }
+
+/**
+ * Clases selladas e interfaces selladas
+ * Si no necesitas un estado común para todas las clases hijas SEALED INTERFACE, si no SEALED CLASS
+ * SEALED CLASS convienen cuando hay estado, siendo sus hijos clases si se tiene y object si no tienen estado.
+ */
+
+/*
+sealed class CanWalk(val legs: Int) {
+    class Elephant(val name: String): CanWalk(4)
+    class Spider(val age: Int):CanWalk(8)
+}
+
+sealed interface CanFly
+object Swan: CanWalk(2), CanFly
+object Fly: CanFly
+
+fun test(canWalk: CanWalk): Int = when(canWalk) {
+        is CanWalk.Elephant -> canWalk.name.toInt()
+        is CanWalk.Spider -> canWalk.age
+        Swan ->
+    }
+
+fun test2(canFly: CanFly): Int = when(canFly) {
+    Fly ->
+    Swan ->
+}*/
