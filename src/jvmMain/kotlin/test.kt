@@ -1,9 +1,9 @@
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import model.Note
+import data.model.Note
 
 class ViewModel {
     private var _state: MutableStateFlow<Note> = MutableStateFlow(
@@ -11,20 +11,36 @@ class ViewModel {
     )
     val state: StateFlow<Note> = _state
 
+    private var _state2 =
+        MutableSharedFlow<Note>(replay = 3, extraBufferCapacity = 6, onBufferOverflow = BufferOverflow.DROP_OLDEST)
+    val state2 = _state2.asSharedFlow()
+
     suspend fun update() {
+        /*        var count = 1
+                while (true) {
+                    delay(2000)
+                    count++
+                    _state.value = Note("Title $count", "Content $count", Note.Type.TEXT)
+                }*/
         var count = 1
         while (true) {
-            delay(2000)
+            delay(500)
+            _state2.emit(Note("Title 1", "Content 1", Note.Type.TEXT))
+            println("Emitting Title $count")
             count++
-            _state.value = Note("Title $count", "Content $count", Note.Type.TEXT)
         }
     }
 }
+
 fun main(): Unit = runBlocking {
 
     val viewModel = ViewModel()
-    launch{ viewModel.update() }
-    viewModel.state.collect(::println)
+    launch { viewModel.update() }
+    delay(2_100)
+    viewModel.state2.distinctUntilChanged().collect {
+        delay(1_000)
+        println(it)
+    }
 
 //    val res = flow {
 //        delay(1000)
