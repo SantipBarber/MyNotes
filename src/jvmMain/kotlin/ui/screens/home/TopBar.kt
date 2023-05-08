@@ -22,6 +22,18 @@ fun TopBar(onFilterClick: (Filter) -> Unit) {
 @Composable
 private fun FilterAction(onFilterClick: (Filter) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
+
+/*    @Composable
+    infix fun Filter.ToMenuItem(label: String) =
+        DropdownMenuItem(
+            onClick = {
+                expanded = false
+                onFilterClick(this)
+            }
+        ) {
+            Text(text = label)
+        }*/
+
     IconButton(
         onClick = { expanded = !expanded }
     ) {
@@ -30,30 +42,26 @@ private fun FilterAction(onFilterClick: (Filter) -> Unit) {
             expanded = expanded,
             onDismissRequest = { expanded = false }
         ) {
-            DropdownMenuItem(
-                onClick = {
-                    expanded = false
-                    onFilterClick(Filter.All)
-                }
-            ) {
-                Text(text = "All")
-            }
-            DropdownMenuItem(
-                onClick = {
-                    expanded = false
-                    onFilterClick(Filter.ByType(Note.Type.TEXT))
-                }
-            ) {
-                Text(text = "Text")
-            }
-            DropdownMenuItem(
-                onClick = {
-                    expanded = false
-                    onFilterClick(Filter.ByType(Note.Type.AUDIO))
-                }
-            ) {
-                Text(text = "Audio")
-            }
+
+
+           /* Filter.All ToMenuItem "All"
+            Filter.ByType(Note.Type.TEXT) ToMenuItem "Text"
+            Filter.ByType(Note.Type.AUDIO) ToMenuItem "Audio"*/
+
+            listOf(
+                 Filter.All to "All",
+                 Filter.ByType(Note.Type.TEXT) to "Text",
+                 Filter.ByType(Note.Type.AUDIO) to "Audio"
+             ).forEach { (filter, label) ->
+                 DropdownMenuItem(
+                     onClick = {
+                         expanded = false
+                         onFilterClick(filter)
+                     }
+                 ) {
+                     Text(text = label)
+                 }
+             }
         }
     }
 }
