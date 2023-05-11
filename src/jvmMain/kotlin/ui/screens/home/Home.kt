@@ -30,10 +30,13 @@ fun Home(): Unit = with(HomeState) {
         ) { padding ->
             Box(
                 modifier = Modifier.fillMaxSize().padding(padding),
-                contentAlignment = Alignment.Center
+                contentAlignment = Alignment.TopCenter
             ) {
                 if (state.isLoading) {
-                    CircularProgressIndicator()
+                    CircularProgressIndicator(
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                    )
                 }
 
                 state.filteredNotes?.let { NotesList(it) }
