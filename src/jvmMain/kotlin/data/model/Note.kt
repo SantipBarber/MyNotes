@@ -14,9 +14,22 @@ data class Note(
         TEXT,
         AUDIO
     }
+
+    /**
+     * Necesitamos declararlo para que podamos crear propiedades de tipo extensión de manera externa también
+     */
+    companion object
 }
 
-fun getNotes(): Flow<List<Note>> = flow {
+operator fun Note.plus(other: Note): Note = Note(title, "$description ${other.description}", type)
+
+fun test(note1: Note, note2: Note) = note1 + note2
+
+/**
+ * Extension property
+ * Esta es la forma en al que podemos crear propiedades de tipo extensión
+ */
+val Note.Companion.fakeNotes: Flow<List<Note>>  get() = flow {
     delay(2_000)
     val notes = (1..10).map {
         Note(
