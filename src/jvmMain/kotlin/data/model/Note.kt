@@ -14,7 +14,6 @@ data class Note(
         TEXT,
         AUDIO
     }
-
     /**
      * Necesitamos declararlo para que podamos crear propiedades de tipo extensión de manera externa también
      */
