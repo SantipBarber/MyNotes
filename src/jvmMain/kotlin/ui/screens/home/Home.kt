@@ -4,42 +4,43 @@ import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import data.model.Note
 
 @Preview
 @Composable
-fun Home(): Unit = with(HomeState) {
-
-    val state by state.collectAsState()
-
-    LaunchedEffect(true) { loadNotes(this) }
+fun Home(vm: HomeViewModel, onNoteClick: (noteId: Long) -> Unit) {
 
     MaterialTheme {
         Scaffold(
             topBar = {
-                TopBar(::onFilterClick)
+                TopBar(onFilterClick = { vm::onFilterClick })
+            },
+            floatingActionButton = {
+                FloatingActionButton(
+                    onClick = { onNoteClick(Note.NEW_NOTE_ID) }
+                ) {
+                    Icon(imageVector = Icons.Default.Add, contentDescription = "Add Note")
+                }
             }
         ) { padding ->
             Box(
                 modifier = Modifier.fillMaxSize().padding(padding),
                 contentAlignment = Alignment.TopCenter
             ) {
-                if (state.isLoading) {
+                if (vm.state.isLoading) {
                     CircularProgressIndicator(
                         modifier = Modifier
                             .align(Alignment.Center)
                     )
                 }
 
-                state.filteredNotes?.let { NotesList(it) }
+                vm.state.filteredNotes?.let { note -> NotesList(note) { onNoteClick(it.id) } }
             }
         }
     }

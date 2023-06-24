@@ -1,14 +1,14 @@
 package ui.screens.home
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import data.model.Filter
 import data.model.Note
-import data.remote.notesClient
-import io.ktor.client.call.*
-import io.ktor.client.request.*
+import data.remote.NotesRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlin.reflect.KProperty
 
@@ -26,22 +26,25 @@ operator fun <T> MutableStateFlow<T>.setValue(
 }
 
 
-object HomeState {
-    private val _state = MutableStateFlow(UiState())
-     val state = _state.asStateFlow()
+class HomeViewModel(private val scope: CoroutineScope) {
 
-    //var state: UiState by MutableStateFlow(UiState())
-    //    private set
-    fun loadNotes(coroutineScope: CoroutineScope) {
-        coroutineScope.launch {
-            val notes = notesClient.request("http://0.0.0.0:8080/notes")
-            println(notes.body() as String)
+    var state by mutableStateOf(UiState())
+        private set
+
+    init {
+        loadNotes()
+    }
+    private fun loadNotes() {
+        scope.launch {
+            state= UiState(isLoading = true)
+            val notes = NotesRepository.getAll()
+            state= UiState(notes = notes)
         }
     }
 
 
     fun onFilterClick(filter: Filter) {
-        _state.value = UiState(filter = filter)
+        state= UiState(filter = filter)
     }
 
     data class UiState(

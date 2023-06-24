@@ -1,5 +1,6 @@
 package ui.screens.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -16,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import data.model.Note
 
 @Composable
-fun NotesList(notes: List<Note>) {
+fun NotesList(notes: List<Note>, onNoteClicked: (Note) -> Unit) {
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth(),
@@ -27,6 +28,7 @@ fun NotesList(notes: List<Note>) {
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
                     .padding(8.dp)
+                    .clickable { onNoteClicked(note) },
             ) {
                 Column(
                     modifier = Modifier.padding(16.dp)

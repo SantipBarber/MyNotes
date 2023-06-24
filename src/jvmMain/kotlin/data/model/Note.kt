@@ -4,8 +4,11 @@ import data.model.Note.Type.AUDIO
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Note(
+    val id: Long = NEW_NOTE_ID,
     val title: String,
     val description: String,
     val type: Type
@@ -14,13 +17,12 @@ data class Note(
         TEXT,
         AUDIO
     }
-    /**
-     * Necesitamos declararlo para que podamos crear propiedades de tipo extensión de manera externa también
-     */
-    companion object
+    companion object {
+        const val NEW_NOTE_ID = -1L
+    }
 }
 
-operator fun Note.plus(other: Note): Note = Note(title, "$description ${other.description}", type)
+operator fun Note.plus(other: Note): Note = Note(1000L ,title, "$description ${other.description}", type)
 
 fun test(note1: Note, note2: Note) = note1 + note2
 
@@ -32,6 +34,7 @@ val Note.Companion.fakeNotes: Flow<List<Note>>  get() = flow {
     delay(2_000)
     val notes = (1..10).map {
         Note(
+            id = it.toLong(),
             title = "Title $it",
             description = "Description $it",
             if (it % 3 == 0) AUDIO else Note.Type.TEXT

@@ -5,7 +5,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import data.model.Note
 
-class ViewModel {
+open class ViewModel {
     /*private var _state: MutableStateFlow<Note> = MutableStateFlow(
         value = Note("Title 1", "Content 1", Note.Type.TEXT)
     )*/
@@ -25,7 +25,7 @@ class ViewModel {
         var count = 1
         while (true) {
             delay(500)
-            _state2.emit(Note("Title 1", "Content 1", Note.Type.TEXT))
+            _state2.emit(Note(1,"Title 1", "Content 1", Note.Type.TEXT))
             println("Emitting Title $count")
             count++
         }

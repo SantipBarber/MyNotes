@@ -7,6 +7,7 @@ val logback_version: String by project
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
+    kotlin("plugin.serialization") version "1.8.0"
 }
 
 group = "com.spbarber"
@@ -34,6 +35,8 @@ kotlin {
                 implementation("io.ktor:ktor-client-okhttp:${ktor_version}")
                 implementation("io.ktor:ktor-client-logging:$ktor_version")
                 implementation("ch.qos.logback:logback-classic:$logback_version")
+                implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
             }
         }
         val jvmTest by getting
