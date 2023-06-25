@@ -4,13 +4,14 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.runtime.*
+import com.spbarber.devexperto.getAppTitle
 import data.model.Filter
 import data.model.Note
 
 @Composable
 fun TopBar(onFilterClick: (Filter) -> Unit) {
     TopAppBar(
-        title = { Text("My Notes") },
+        title = { Text(getAppTitle()) },
         actions = {
             FilterAction(
                 onFilterClick

@@ -22,7 +22,6 @@ object NotesRepository {
     suspend fun delete(note: Note) = notesClient.delete("$NOTES_URL/${note.id}")
 
     suspend fun update(note: Note) {
-        println("Nota actualizada $note")
         notesClient.put(NOTES_URL) {
             setBody(note)
             contentType(Json)
