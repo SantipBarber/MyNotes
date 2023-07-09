@@ -5,8 +5,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.runtime.*
 import com.spbarber.devexperto.getAppTitle
-import data.model.Filter
-import data.model.Note
+import com.spbarber.devexperto.data.model.Filter
+import com.spbarber.devexperto.data.model.Note
 
 @Composable
 fun TopBar(onFilterClick: (Filter) -> Unit) {

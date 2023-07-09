@@ -1,4 +1,4 @@
-package data.model
+package com.spbarber.devexperto.data.model
 
 sealed interface Filter {
     object All : Filter

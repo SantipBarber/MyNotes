@@ -2,9 +2,9 @@ package ui
 
 import androidx.compose.runtime.*
 import ui.screens.detail.Detail
-import ui.screens.detail.DetailViewModel
+import com.spbarber.devexperto.ui.screens.detail.DetailViewModel
 import ui.screens.home.Home
-import ui.screens.home.HomeViewModel
+import com.spbarber.devexperto.ui.screens.home.HomeViewModel
 
 sealed interface Route {
     object Home : Route
@@ -19,7 +19,7 @@ fun App() {
     route.let {
         when (it) {
             is Route.Detail -> Detail(DetailViewModel(scope = scope, id = it.id), onClose = { route = Route.Home })
-            Route.Home -> Home(vm = HomeViewModel(scope), onNoteClick = {noteId -> route = Route.Detail(id = noteId) })
+            Route.Home -> Home(vm = HomeViewModel(scope), onNoteClick = { noteId -> route = Route.Detail(id = noteId) })
         }
     }
 }

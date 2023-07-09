@@ -1,11 +1,11 @@
-package ui.screens.home
+package com.spbarber.devexperto.ui.screens.home
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import data.model.Filter
-import data.model.Note
-import data.remote.NotesRepository
+import com.spbarber.devexperto.data.model.Filter
+import com.spbarber.devexperto.data.model.Note
+import com.spbarber.devexperto.data.remote.NotesRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

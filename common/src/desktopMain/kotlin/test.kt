@@ -3,7 +3,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import data.model.Note
+import com.spbarber.devexperto.data.model.Note
 
 open class ViewModel {
     /*private var _state: MutableStateFlow<Note> = MutableStateFlow(

@@ -28,7 +28,8 @@ kotlin {
     sourceSets {
         val jsMain by getting {
             dependencies {
-                implementation(compose.web.core)
+                implementation(project(":common"))
+                implementation(compose.html.core)
                 implementation(compose.runtime)
             }
         }
@@ -39,3 +40,5 @@ kotlin {
         }
     }
 }
+
+tasks.register("prepareKotlinBuildScriptModel"){}

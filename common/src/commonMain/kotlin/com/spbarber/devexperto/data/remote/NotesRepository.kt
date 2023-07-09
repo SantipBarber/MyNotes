@@ -1,6 +1,6 @@
-package data.remote
+package com.spbarber.devexperto.data.remote
 
-import data.model.Note
+import com.spbarber.devexperto.data.model.Note
 import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.http.*

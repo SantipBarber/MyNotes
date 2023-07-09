@@ -14,7 +14,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import data.model.Note
+import com.spbarber.devexperto.data.model.Note
+import com.spbarber.devexperto.ui.screens.detail.DetailViewModel
 
 
 @Composable

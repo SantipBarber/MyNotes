@@ -1,10 +1,10 @@
-package ui.screens.detail
+package com.spbarber.devexperto.ui.screens.detail
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import data.model.Note
-import data.remote.NotesRepository
+import com.spbarber.devexperto.data.model.Note
+import com.spbarber.devexperto.data.remote.NotesRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -22,7 +22,7 @@ class DetailViewModel(private val scope: CoroutineScope, private val id: Long) {
     private fun loadNote() {
         scope.launch {
             state = UiState(loading = true)
-            state =UiState(note = NotesRepository.getById(id))
+            state = UiState(note = NotesRepository.getById(id))
         }
     }
 

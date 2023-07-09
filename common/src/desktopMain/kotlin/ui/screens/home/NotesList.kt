@@ -14,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import data.model.Note
+import com.spbarber.devexperto.data.model.Note
 
 @Composable
 fun NotesList(notes: List<Note>, onNoteClicked: (Note) -> Unit) {

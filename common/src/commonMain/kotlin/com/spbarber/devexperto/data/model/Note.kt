@@ -1,6 +1,6 @@
-package data.model
+package com.spbarber.devexperto.data.model
 
-import data.model.Note.Type.AUDIO
+import com.spbarber.devexperto.data.model.Note.Type.AUDIO
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
