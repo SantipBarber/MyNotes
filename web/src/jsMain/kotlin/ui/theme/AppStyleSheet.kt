@@ -33,20 +33,22 @@ object AppStyleSheet : StyleSheet() {
         fontSize(24.px)
         lineHeight(1.em)
         cursor("pointer")
+        property("box-shadow", "0 5px 5px 0 rgba(0,0,0,0.4)")
+        self + hover style { backgroundColor(Color("#6200eccc")) }
     }
 
     val topBar by style {
         position(Position.Absolute)
         top(0.px)
         left(0.px)
-        width(100.percent)
+        right(0.px)
         display(DisplayStyle.Flex)
         flexDirection(FlexDirection.Row)
         alignItems(AlignItems.Center)
-        justifyContent(JustifyContent.SpaceBetween)
+        justifyContent(JustifyContent.SpaceAround)
         backgroundColor(Color("#6200EE"))
+        gap(16.px)
         padding(16.px)
-        margin(0.px)
     }
 
     val topBarTitle by style {
@@ -54,6 +56,16 @@ object AppStyleSheet : StyleSheet() {
         margin(0.px)
         fontSize(25.px)
         fontWeight(FontWeight.NORMAL)
+        property("margin-right", "auto")
+    }
+
+    val topBarIcon by style {
+        color(Color.white)
+        cursor("pointer")
+        fontSize(24.px)
+        borderRadius(50.percent)
+        padding(12.px)
+        self + hover style { backgroundColor(Color("#ffffff4d")) }
     }
 
     val filterAction by style {
@@ -117,5 +129,11 @@ object AppStyleSheet : StyleSheet() {
         height(100.percent)
         gap(16.px)
         alignItems(AlignItems.Center)
+    }
+
+    val detailInput by style {
+        padding(16.px)
+        borderRadius(4.px)
+        border(1.px, LineStyle.Solid, Color("#ccc"))
     }
 }

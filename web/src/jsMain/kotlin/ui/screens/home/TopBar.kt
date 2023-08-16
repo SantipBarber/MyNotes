@@ -7,6 +7,7 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.H1
 import org.jetbrains.compose.web.dom.Text
+import ui.common.Icon
 import ui.theme.AppStyleSheet
 
 @Composable
@@ -30,14 +31,12 @@ private fun FilterAction(onFilterClick: (Filter) -> Unit) {
 
     Div(attrs = { classes(AppStyleSheet.filterAction) }) {
         Div(
-
-
             attrs = {
                 style { color(Color.white) }
                 onClick { expanded = !expanded }
             }
         ) {
-            Text("🔎")
+            Icon(iconName = "search", attrs = { classes(AppStyleSheet.topBarIcon) })
         }
 
         if (expanded) {
