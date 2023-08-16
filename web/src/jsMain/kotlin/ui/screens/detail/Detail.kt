@@ -2,6 +2,7 @@ package ui.screens.detail
 
 import androidx.compose.runtime.Composable
 import com.spbarber.devexperto.ui.screens.detail.DetailViewModel
+import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
 
@@ -10,7 +11,16 @@ fun Detail(
     vm: DetailViewModel,
     onClose: () -> Unit
 ) {
-    Div {
-        Text(vm.state.note.title)
+    Div(attrs = {
+        style {
+            position(Position.Absolute)
+            top(0.px)
+            left(0.px)
+            backgroundColor(Color("#fff"))
+        }
+    }){
+        Div {
+            Text(vm.state.note.title)
+        }
     }
 }

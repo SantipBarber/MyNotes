@@ -3,14 +3,23 @@ package ui.screens.home
 import androidx.compose.runtime.*
 import com.spbarber.devexperto.data.model.Filter
 import com.spbarber.devexperto.data.model.Note
+import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.H1
 import org.jetbrains.compose.web.dom.Text
+import ui.theme.AppStyleSheet
 
 @Composable
 fun TopBar(onFilterClick: (Filter) -> Unit) {
-    Div {
-        H1 { Text("Mis notas") }
+
+    Div(
+        attrs = {
+            classes(AppStyleSheet.topBar)
+        }
+    ) {
+        H1(attrs = {
+            classes(AppStyleSheet.topBarTitle)
+        }) { Text("Mis notas") }
         FilterAction(onFilterClick)
     }
 }
@@ -19,24 +28,33 @@ fun TopBar(onFilterClick: (Filter) -> Unit) {
 private fun FilterAction(onFilterClick: (Filter) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
 
-    Div {
+    Div(attrs = { classes(AppStyleSheet.filterAction) }) {
         Div(
-            attrs = { onClick { expanded = !expanded } }
+
+
+            attrs = {
+                style { color(Color.white) }
+                onClick { expanded = !expanded }
+            }
         ) {
             Text("🔎")
         }
 
         if (expanded) {
-            Div {
+            Div(
+                attrs = {
+                    classes(AppStyleSheet.filterActionExpanded)
+                }
+            ) {
                 listOf(
                     Filter.All to "All",
                     Filter.ByType(Note.Type.TEXT) to "Text",
                     Filter.ByType(Note.Type.AUDIO) to "Audio"
                 ).forEach { (filter, text) ->
                     Div(attrs = {
+                        classes(AppStyleSheet.filterActionExpandedItem)
                         onClick {
                             expanded = false
-                            console.log("onFilterClick ${filter.toString()}. $text")
                             onFilterClick(filter)
                         }
                     }) {
