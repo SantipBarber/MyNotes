@@ -1,15 +1,9 @@
-package ui
-
 import androidx.compose.runtime.*
+import com.spbarber.devexperto.ui.screens.Route
 import ui.screens.detail.Detail
 import com.spbarber.devexperto.ui.screens.detail.DetailViewModel
 import ui.screens.home.Home
 import com.spbarber.devexperto.ui.screens.home.HomeViewModel
-
-sealed interface Route {
-    object Home : Route
-    data class Detail(val id: Long) : Route
-}
 
 @Composable
 fun App() {

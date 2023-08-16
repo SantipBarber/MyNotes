@@ -24,17 +24,6 @@ fun TopBar(onFilterClick: (Filter) -> Unit) {
 private fun FilterAction(onFilterClick: (Filter) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
 
-/*    @Composable
-    infix fun Filter.ToMenuItem(label: String) =
-        DropdownMenuItem(
-            onClick = {
-                expanded = false
-                onFilterClick(this)
-            }
-        ) {
-            Text(text = label)
-        }*/
-
     IconButton(
         onClick = { expanded = !expanded }
     ) {

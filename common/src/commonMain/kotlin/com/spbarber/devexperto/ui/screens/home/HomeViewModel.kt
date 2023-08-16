@@ -44,7 +44,7 @@ class HomeViewModel(private val scope: CoroutineScope) {
 
 
     fun onFilterClick(filter: Filter) {
-        state= UiState(filter = filter)
+        state= state.copy(filter = filter)
     }
 
     data class UiState(

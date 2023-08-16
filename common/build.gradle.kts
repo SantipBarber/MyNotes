@@ -25,7 +25,7 @@ kotlin {
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material)
-
+                implementation(compose.materialIconsExtended)
 
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
                 implementation("io.ktor:ktor-client-core:${ktor_version}")
@@ -39,10 +39,7 @@ kotlin {
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
-                implementation(compose.materialIconsExtended)
                 implementation(compose.foundation)
-
-
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.1")
                 implementation("io.ktor:ktor-client-okhttp:${ktor_version}")
             }

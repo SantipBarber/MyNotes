@@ -20,7 +20,7 @@ fun Home(vm: HomeViewModel, onNoteClick: (noteId: Long) -> Unit) {
     MaterialTheme {
         Scaffold(
             topBar = {
-                TopBar(onFilterClick = { vm::onFilterClick })
+                TopBar(onFilterClick = { vm.onFilterClick(it) })
             },
             floatingActionButton = {
                 FloatingActionButton(

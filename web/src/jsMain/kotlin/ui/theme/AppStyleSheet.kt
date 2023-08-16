@@ -1,8 +1,19 @@
 package ui.theme
 
 import org.jetbrains.compose.web.css.*
+import org.jetbrains.skia.FontWeight
 
 object AppStyleSheet: StyleSheet() {
+
+    val noteCardTitle by style {
+        style {
+            flex(1)
+            lineHeight(1.5.em)
+            margin(0.px)
+            fontSize(20.px)
+            fontWeight(FontWeight.NORMAL)
+        }
+    }
 
     val noteCardContent by style {
         display(DisplayStyle.Flex)
@@ -30,6 +41,8 @@ object AppStyleSheet: StyleSheet() {
         gap(16.px)
         alignItems(AlignItems.Center)
     }
+
+
 
 
 }
