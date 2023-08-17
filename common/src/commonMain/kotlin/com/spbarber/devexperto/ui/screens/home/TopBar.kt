@@ -1,4 +1,4 @@
-package ui.screens.home
+package com.spbarber.devexperto.ui.screens.home
 
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons

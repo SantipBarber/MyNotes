@@ -6,7 +6,7 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.ContentType.Application.Json
 
-const val NOTES_URL = "http://localhost:8080/notes"
+expect val NOTES_URL:String
 
 object NotesRepository {
 

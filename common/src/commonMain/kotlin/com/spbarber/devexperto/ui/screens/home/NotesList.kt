@@ -1,4 +1,4 @@
-package ui.screens.home
+package com.spbarber.devexperto.ui.screens.home
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*

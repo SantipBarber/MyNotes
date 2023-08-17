@@ -1,6 +1,5 @@
-package ui.screens.home
+package com.spbarber.devexperto.ui.screens.home
 
-import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -11,9 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.spbarber.devexperto.data.model.Note
-import com.spbarber.devexperto.ui.screens.home.HomeViewModel
 
-@Preview
 @Composable
 fun Home(vm: HomeViewModel, onNoteClick: (noteId: Long) -> Unit) {
 

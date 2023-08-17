@@ -3,8 +3,9 @@ val logback_version: String by rootProject.project
 
 plugins {
     kotlin("multiplatform")
-    id("org.jetbrains.compose")
     kotlin("plugin.serialization")
+    id("org.jetbrains.compose")
+    id("com.android.library")
 }
 
 group = "com.spbarber"
@@ -12,10 +13,15 @@ version = "1.0-SNAPSHOT"
 
 
 kotlin {
+    android() {
+        publishLibraryVariants("release", "debug")
+    }
+
+
     jvm("desktop") {
         jvmToolchain(11)
-        withJava()
     }
+
     js(IR) {
         browser()
     }
@@ -27,7 +33,7 @@ kotlin {
                 api(compose.material)
                 implementation(compose.materialIconsExtended)
 
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
                 implementation("io.ktor:ktor-client-core:${ktor_version}")
                 implementation("io.ktor:ktor-client-logging:$ktor_version")
                 implementation("ch.qos.logback:logback-classic:$logback_version")
@@ -40,11 +46,20 @@ kotlin {
             dependencies {
                 implementation(compose.desktop.currentOs)
                 implementation(compose.foundation)
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3")
                 implementation("io.ktor:ktor-client-okhttp:${ktor_version}")
             }
         }
         val desktopTest by getting
+
+        val androidMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+                implementation("io.ktor:ktor-client-okhttp:${ktor_version}")
+            }
+        }
+
+        val androidTest by getting
 
         val jsMain by getting {
             dependencies {
@@ -54,5 +69,18 @@ kotlin {
             }
         }
         val jsTest by getting
+    }
+}
+
+android {
+    compileSdk = 33
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    defaultConfig {
+        minSdk = 24
+        compileSdk = 33
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 }
