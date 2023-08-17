@@ -55,7 +55,7 @@ kotlin {
             dependencies {
                 implementation(compose.desktop.currentOs)
                 implementation(compose.foundation)
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.3")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.7.3")
                 implementation("io.ktor:ktor-client-okhttp:${ktor_version}")
             }
         }

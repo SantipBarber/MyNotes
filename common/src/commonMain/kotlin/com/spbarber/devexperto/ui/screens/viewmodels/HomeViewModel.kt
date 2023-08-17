@@ -3,10 +3,11 @@ package com.spbarber.devexperto.ui.screens.viewmodels
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import cafe.adriel.voyager.core.model.ScreenModel
+import cafe.adriel.voyager.core.model.coroutineScope
 import com.spbarber.devexperto.data.model.Filter
 import com.spbarber.devexperto.data.model.Note
 import com.spbarber.devexperto.data.remote.NotesRepository
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -26,7 +27,7 @@ operator fun <T> MutableStateFlow<T>.setValue(
 }
 
 
-class HomeViewModel(private val scope: CoroutineScope) {
+class HomeViewModel: ScreenModel {
 
     var state by mutableStateOf(UiState())
         private set
@@ -35,7 +36,7 @@ class HomeViewModel(private val scope: CoroutineScope) {
         loadNotes()
     }
     private fun loadNotes() {
-        scope.launch {
+        coroutineScope.launch {
             state= UiState(isLoading = true)
             val notes = NotesRepository.getAll()
             state= UiState(notes = notes)
