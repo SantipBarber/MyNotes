@@ -1,15 +1,15 @@
-package ui.screens.home
+package com.spbarber.devexperto.ui.screens.home
 
 import androidx.compose.runtime.Composable
 import com.spbarber.devexperto.data.model.Note
-import com.spbarber.devexperto.ui.screens.home.HomeViewModel
+import com.spbarber.devexperto.ui.screens.viewmodels.HomeViewModel
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
-import ui.theme.AppStyleSheet
+import com.spbarber.devexperto.ui.theme.AppStyleSheet
 
 @Composable
-fun Home(
+actual fun Home(
     vm: HomeViewModel,
     onNoteClicked: (noteId: Long) -> Unit
 ) {

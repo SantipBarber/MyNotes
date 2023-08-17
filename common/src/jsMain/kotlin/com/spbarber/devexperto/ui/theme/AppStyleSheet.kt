@@ -1,4 +1,4 @@
-package ui.theme
+package com.spbarber.devexperto.ui.theme
 
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.skia.FontWeight

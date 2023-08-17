@@ -1,18 +1,18 @@
-package ui.screens.detail
+package com.spbarber.devexperto.ui.screens.detail
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.spbarber.devexperto.data.model.Note
-import com.spbarber.devexperto.ui.screens.detail.DetailViewModel
+import com.spbarber.devexperto.ui.screens.viewmodels.DetailViewModel
 import org.jetbrains.compose.web.attributes.placeholder
 import org.jetbrains.compose.web.attributes.selected
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
-import ui.common.Icon
-import ui.theme.AppStyleSheet
+import com.spbarber.devexperto.ui.common.Icon
+import com.spbarber.devexperto.ui.theme.AppStyleSheet
 
 @Composable
-fun Detail(
+actual fun Detail(
     vm: DetailViewModel,
     onClose: () -> Unit
 ) {

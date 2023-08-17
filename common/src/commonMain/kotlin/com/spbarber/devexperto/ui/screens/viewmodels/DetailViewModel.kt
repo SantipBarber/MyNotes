@@ -1,4 +1,4 @@
-package com.spbarber.devexperto.ui.screens.detail
+package com.spbarber.devexperto.ui.screens.viewmodels
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

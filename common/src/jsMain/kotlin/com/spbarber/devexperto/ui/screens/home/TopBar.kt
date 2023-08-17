@@ -1,4 +1,4 @@
-package ui.screens.home
+package com.spbarber.devexperto.ui.screens.home
 
 import androidx.compose.runtime.*
 import com.spbarber.devexperto.data.model.Filter
@@ -7,8 +7,8 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.H1
 import org.jetbrains.compose.web.dom.Text
-import ui.common.Icon
-import ui.theme.AppStyleSheet
+import com.spbarber.devexperto.ui.common.Icon
+import com.spbarber.devexperto.ui.theme.AppStyleSheet
 
 @Composable
 fun TopBar(onFilterClick: (Filter) -> Unit) {

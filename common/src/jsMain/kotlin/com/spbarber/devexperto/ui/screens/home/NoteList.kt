@@ -1,4 +1,4 @@
-package ui.screens.home
+package com.spbarber.devexperto.ui.screens.home
 
 import androidx.compose.runtime.Composable
 import com.spbarber.devexperto.data.model.Note
@@ -6,8 +6,8 @@ import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.H3
 import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
-import ui.common.Icon
-import ui.theme.AppStyleSheet
+import com.spbarber.devexperto.ui.common.Icon
+import com.spbarber.devexperto.ui.theme.AppStyleSheet
 
 @Composable
 fun NoteList(notes: List<Note>, onClick: (Note) -> Unit) {
