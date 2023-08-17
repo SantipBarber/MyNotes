@@ -1,5 +1,6 @@
 val ktor_version: String by rootProject.project
 val logback_version: String by rootProject.project
+val voyager_version: String by rootProject.project
 
 plugins {
     kotlin("multiplatform")
@@ -39,6 +40,8 @@ kotlin {
                 implementation("ch.qos.logback:logback-classic:$logback_version")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+                implementation("cafe.adriel.voyager:voyager-navigator:$voyager_version")
+
             }
         }
         val commonTest by getting
